@@ -1,33 +1,37 @@
-<h1>Listing books</h1>
+<h1>These are your books</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Author</th>
-    <th>Image</th>
-    <th>Date</th>
-    <th>User</th>
-    <th>Tags</th>
-    <th>Review url</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="table-condensed">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Image</th>
+        <th>Date</th>
+        <!-- <th>User</th> -->
+        <th>Tags</th>
+        <th>Review url</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
 
+<tbody>
 <% @books.each do |book| %>
   <tr>
     <td><%= book.title %></td>
     <td><%= book.author %></td>
-    <td><%= book.image %></td>
+    <td><img src="<%= book.image %>" alt="Book Image"></td>
     <td><%= book.date %></td>
-    <td><%= book.user_id %></td>
+    <!-- <td><%= book.user_id %></td> -->
     <td><%= book.tags %></td>
-    <td><%= book.review_url %></td>
+    <td><%= link_to 'Book review', book.review_url %></td>
     <td><%= link_to 'Show', book %></td>
-    <td><%= link_to 'Edit', edit_book_path(book) %></td>
-    <td><%= link_to 'Destroy', book, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Change', edit_book_path(book) %></td>
+    <td><%= link_to 'Delete', book, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
